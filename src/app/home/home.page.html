@@ -1,20 +1,53 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <!-- Botón flotante para eliminar tareas completadas -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="mostrarAlertaEliminar()" color="danger">
+      <ion-icon name="trash"></ion-icon> <!-- Icono de papelera -->
+    </ion-fab-button>
+  </ion-fab>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Botón flotante con el símbolo "+" -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="margin-bottom: 70px;">
+    <ion-fab-button (click)="navegarCrearTarea()" color="primary">
+      <ion-icon name="add"></ion-icon> <!-- Símbolo "+" -->
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- Sección de Tareas Pendientes -->
+  <ion-card>
+    <ion-card-header (click)="navegarPendientes()">
+      <ion-card-title>Tareas Pendientes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let tarea of tareasPendientes" (click)="verTarea(tarea)">
+        <ion-label>
+          <h2>{{ tarea.titulo }}</h2>
+          <!-- <p>{{ tarea.descripcion }}</p> -->
+        </ion-label>
+      </ion-item>      
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Sección de Tareas Completadas -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tareas Completadas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item *ngFor="let tarea of tareasCompletadas" (click)="verTarea(tarea)">
+        <ion-label>
+          <h2>{{ tarea.titulo }}</h2>
+          <p>{{ tarea.descripcion }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

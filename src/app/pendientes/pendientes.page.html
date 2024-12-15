@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- Botón de regresar -->
+      <ion-back-button defaultHref="/" text="Home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tareas Pendientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de tareas pendientes -->
+
+  <!-- Mostrar mensaje si no hay tareas pendientes -->
+  <div *ngIf="tareasPendientes.length === 0" class="no-tareas">
+    <h1>No hay tareas pendientes</h1>
+  </div>
+
+  <ion-item *ngFor="let tarea of tareasPendientes">
+    <ion-label>
+      <h2>{{ tarea.titulo }}</h2>
+      <p>{{ tarea.descripcion }}</p>
+    </ion-label>
+
+    <!-- Botones para eliminar o marcar como completada -->
+    <ion-buttons slot="end">
+      <!-- Botón de marcar como completada -->
+      <ion-button (click)="marcarCompletada(tarea)" color="success">
+        Completada
+      </ion-button>
+
+      <!-- Botón de eliminar -->
+      <ion-button (click)="eliminarTarea(tarea)" color="danger">
+        Eliminar
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-content>

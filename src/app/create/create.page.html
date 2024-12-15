@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Formulario para crear tareas -->
+  <form (ngSubmit)="agregarTarea()">
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Título</ion-label>
+          <ion-input [(ngModel)]="titulo" name="titulo" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea [(ngModel)]="descripcion" name="descripcion" required></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Tipo</ion-label>
+          <ion-select [(ngModel)]="tipo" name="tipo" required>
+            <ion-select-option value="trabajo">Trabajo</ion-select-option>
+            <ion-select-option value="casa">Casa</ion-select-option>
+            <ion-select-option value="negocios">Negocios</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Botones de acción -->
+    <div class="botones-acciones">
+      <ion-button expand="block" type="submit" color="primary">Crear</ion-button>
+      <ion-button expand="block" (click)="cancelar()" color="medium">Cancelar</ion-button>
+    </div>
+  </form>
+</ion-content>

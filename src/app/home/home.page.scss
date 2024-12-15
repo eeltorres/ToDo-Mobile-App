@@ -25,3 +25,18 @@
 #container a {
   text-decoration: none;
 }
+
+ion-card {
+  margin: 10px 0;
+}
+
+ion-button {
+  margin: 20px 0;
+}
+
+ion-fab-button {
+  border-radius: 50% !important;  // Hacer el botón redondeado
+  width: 56px;  // Tamaño del botón
+  height: 56px;  // Tamaño del botón
+  font-size: 30px;  // Tamaño del ícono dentro del botón
+}

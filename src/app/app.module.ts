@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';  // Asegúrate de que IonicModule esté importado
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { HomePage } from './home/home.page';
+import { CreatePage } from './create/create.page';
+import { PendientesPage } from './pendientes/pendientes.page';
+import { TareaPage } from './tarea/tarea.page';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  declarations: [
+    AppComponent,  // Solo declaramos AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),  // Asegúrate de que IonicModule esté en imports
+    RouterModule.forRoot([
+      { path: '', component: HomePage },
+      { path: 'crear-tarea', component: CreatePage },
+      { path: 'pendientes', component: PendientesPage },
+      { path: 'tarea', component: TareaPage },
+    ])
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
